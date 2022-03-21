@@ -1,5 +1,8 @@
 extends KinematicBody
 
+# Emitted when the player was hit by a mob.
+# Put this at the top of the script.
+signal hit
 # How fast the player moves in meters per second.
 export var speed = 14
 # The downward acceleration when in the air, in meters per second squared.
@@ -52,4 +55,15 @@ func _physics_process(delta):
 			if Vector3.UP.dot(collision.normal) > 0.1:
 				# If so, we squash it and bounce
 				mob.squash()
-				velocity.y += bounce_impulse
+				velocity.y = bounce_impulse
+
+
+
+# And this function at the bottom
+func die():
+	print("Player died")
+	emit_signal("hit")
+	queue_free()
+
+func _on_MobDetector_body_entered(_body):
+	die()

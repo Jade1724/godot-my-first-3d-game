@@ -62,7 +62,7 @@ mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Cylinders"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 16 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
@@ -72,7 +72,7 @@ mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="Cylinders"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 16 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
@@ -86,4 +86,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0506, 0, -15.3728 )
 wait_time = 0.5
 autostart = true
 
+[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]

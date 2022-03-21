@@ -10,7 +10,7 @@ export var max_speed = 18
 
 var velocity = Vector3.ZERO
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	move_and_slide(velocity)
 	
 func initialize(start_position, player_position):
