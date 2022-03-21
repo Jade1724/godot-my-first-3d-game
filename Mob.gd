@@ -1,5 +1,8 @@
 extends KinematicBody
 
+# Emitted when the player jumped on the mob.
+signal squashed
+
 # Minimum speed of the mob in meters per second.
 export var min_speed = 10
 # Maximum speed of the mob in meters per second.
@@ -26,4 +29,8 @@ func initialize(start_position, player_position):
 	
 
 func _on_VisibilityNotifier_screen_exited():
+	queue_free()
+	
+func squash():
+	emit_signal("squashed")
 	queue_free()

@@ -6,6 +6,8 @@ export var speed = 14
 export var fall_acceleration = 75
 # Vertical impulse appliced to the character upon jumping in meters per second.
 export var jump_impulse = 20
+# Vertical impulse applied to the character upon bouncing over a mob in meters per second.
+export var bounce_impulse = 16
 
 var velocity = Vector3.ZERO
 
@@ -39,3 +41,15 @@ func _physics_process(delta):
 	
 	# Moving the character
 	velocity = move_and_slide(velocity, Vector3.UP)
+	
+	for index in range(get_slide_count()):
+		# We check every collision that occured this frame,
+		var collision = get_slide_collision(index)
+		# If we collide witha monster
+		if collision.collider.is_in_group("mob"):
+			var mob = collision.collider
+			# We check that we are hitting it from above
+			if Vector3.UP.dot(collision.normal) > 0.1:
+				# If so, we squash it and bounce
+				mob.squash()
+				velocity.y += bounce_impulse
