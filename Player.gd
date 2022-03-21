@@ -14,7 +14,7 @@ func _physics_process(delta):
 	# We check for each move input and update the directio naccordingly.
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("move_left"):
 		direction.x -= 1
 	if Input.is_action_pressed("move_back"):
 		direction.z += 1
